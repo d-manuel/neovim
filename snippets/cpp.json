@@ -1,0 +1,7 @@
+{
+  "Fmt Print": {
+    "prefix": ["print", "fmt-print"],
+    "body": ["fmt::print(\"${1:}{}\\n\",${2:});"],
+    "description": "fmt::print statement"
+  }
+}
