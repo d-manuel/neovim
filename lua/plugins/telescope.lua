@@ -10,6 +10,7 @@ return {
 		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags)
 		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin)
 		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references)
+		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles)
 		vim.keymap.set("n", "<leader>fs", function()
 			require("telescope.builtin").lsp_document_symbols({
 				symbols = { "method", "function" }
@@ -20,6 +21,7 @@ return {
 				cwd = vim.fn.stdpath('config')
 			}
 		end)
-		vim.keymap.set("n","<leader>b",require('telescope.builtin').buffers)
+		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers)
+		require("misc.telescope-multigrep").setup()
 	end
 }

@@ -36,7 +36,7 @@ vim.keymap.set({ "n", "i" }, "<M-k>", "<cmd>cprev<CR>")
 
 
 
--- Hide the status bar for even more verticla 
+-- Hide the status bar for even more verticla
 local statusbarHidden = false
 vim.keymap.set({ "n" }, "<leader>us", function()
 	if statusbarHidden then

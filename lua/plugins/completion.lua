@@ -42,7 +42,8 @@ return {
 					auto_show_delay_ms = 500
 				}
 			},
-			signature = { enabled = true }
+			signature = { enabled = true },
+			enabled = function() return not vim.tbl_contains({ "", "unknown" }, vim.bo.filetype) end,
 		},
 	},
 }
