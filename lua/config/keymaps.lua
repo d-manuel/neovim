@@ -13,7 +13,7 @@ vim.keymap.set({ "n", "x" }, "<leader>p", '"+p', { desc = "Paste from system cli
 vim.keymap.set({ "n", "x" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
 
 -- yank a line but you can paste it inline then
-vim.keymap.set({"n","v"}, "Y", "^y$", { desc = "yank line but be able to paste it inline afterwards" })
+vim.keymap.set({ "n", "v" }, "Y", "^y$", { desc = "yank line but be able to paste it inline afterwards" })
 
 
 
@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>")
 vim.keymap.set("n", "<C-s>", "<cmd>wa<CR>")
 
 -- Quit
-vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>")
+vim.keymap.set("n", "<leader>qq", "<cmd>confirm qa<CR>")
 
 -- buffer movement
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>")
