@@ -4,6 +4,7 @@ vim.lsp.enable({
 	"bashls",
 	"ruff",
 	"pyright",
+	"yamlls",
 })
 
 local blink = require "blink.cmp"
