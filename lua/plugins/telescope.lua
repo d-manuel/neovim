@@ -23,5 +23,18 @@ return {
 		end)
 		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers)
 		require("misc.telescope-multigrep").setup()
+		-- allow closing buffers from the buffers picker
+		local actions = require "telescope.actions"
+		require("telescope").setup {
+			pickers = {
+				buffers = {
+					mappings = {
+						i = {
+							["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+						}
+					}
+				}
+			}
+		}
 	end
 }
