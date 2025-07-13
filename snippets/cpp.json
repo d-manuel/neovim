@@ -3,5 +3,28 @@
     "prefix": ["print", "fmt-print"],
     "body": ["fmt::print(\"${1:}{}\\n\",${2:});"],
     "description": "fmt::print statement"
+  },
+  "switch": {
+    "prefix": "switch_",
+    "body": [
+      "switch ($1) {",
+	"  case $2:",
+	"\t$0",
+	"\tbreak;",
+	"  default:",
+	"\tbreak;",
+	"}"
+    ],
+    "description": "snippet for a switch statement"
+  },
+  "case": {
+    "prefix": "case_",
+    "body": ["  case $1:", "\t$0", "\tbreak;"],
+    "description": "snippet for case (...)"
+  },
+  "try": {
+    "prefix": "try_",
+    "body": ["try", "{", "\t$1", "}", "catch (const std::exception& $2)", "{", "\t$0", "}\n"],
+    "description": "snippet for a try-catch block"
   }
 }
