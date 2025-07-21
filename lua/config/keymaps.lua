@@ -35,6 +35,8 @@ vim.keymap.set({ "n", "i" }, "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set({ "n", "i" }, "<M-k>", "<cmd>cprev<CR>")
 
 
+-- pasting into selection does not put into clipboard
+vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
 
 -- Hide the status bar for even more verticla
 local statusbarHidden = false
