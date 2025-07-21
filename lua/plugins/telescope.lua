@@ -26,6 +26,13 @@ return {
 		-- allow closing buffers from the buffers picker
 		local actions = require "telescope.actions"
 		require("telescope").setup {
+			defaults = {
+				layout_strategy = 'vertical',
+				layout_config = {
+					height = 0.95,
+					preview_height = 0.7
+				}
+			},
 			pickers = {
 				buffers = {
 					mappings = {
