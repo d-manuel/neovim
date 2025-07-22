@@ -47,7 +47,6 @@ local live_multigrep = function(opts)
 end
 
 M.setup = function()
-	print("loaded")
 	vim.keymap.set("n", "<leader>fm", live_multigrep)
 end
 

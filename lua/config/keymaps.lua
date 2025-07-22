@@ -38,6 +38,13 @@ vim.keymap.set({ "n", "i" }, "<M-k>", "<cmd>cprev<CR>")
 -- pasting into selection does not put into clipboard
 vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
 
+
+-- navigate Splits
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+
 -- Hide the status bar for even more verticla
 local statusbarHidden = false
 vim.keymap.set({ "n" }, "<leader>us", function()
