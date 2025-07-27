@@ -43,6 +43,10 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true },{ desc 
 vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true },{ desc = "Focus split up"})
 vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true },{ desc = "Focus split right"})
 
+
+vim.keymap.set("n", "<leader>uz", "<C-w>_<C-w>|", {desc = "Zoom"})
+vim.keymap.set("n", "<leader>=", "<C-w>=", {desc = "Reset Zoom"})
+
 -- Hide the status bar for even more vertical space
 local statusbarHidden = false
 vim.keymap.set({ "n" }, "<leader>us", function()
