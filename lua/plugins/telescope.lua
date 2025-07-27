@@ -1,30 +1,27 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
-	dependencies = { 'nvim-lua/plenary.nvim',
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = 'make' }
+	dependencies = { 'nvim-lua/plenary.nvim'
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files)
-		vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep)
-		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags)
-		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin)
-		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references)
-		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles)
+		vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc= "Telescope: Find files"})
+		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, {desc = "Telescope: help"})
+		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin, {desc = "Telescope: all builtins"})
+		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references, {desc = "Telescope: lsp references"})
+		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, {desc = "Telescope: old files"})
 		vim.keymap.set("n", "<leader>fs", function()
 			require("telescope.builtin").lsp_document_symbols({
 				symbols = { "method", "function" }
 			})
-		end, opts)
+		end, {desc = "Telescope: symbols"})
 		vim.keymap.set("n", "<leader>en", function()
 			require('telescope.builtin').find_files {
 				cwd = vim.fn.stdpath('config')
 			}
-		end)
-		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers)
-		require("misc.telescope-multigrep").setup()
+		end, {desc = "Telescope: neovim config"})
+		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers, {desc = "Telescope: buffers"})
+		vim.keymap.set("n","<leader>fg", require("misc.telescope-multigrep").live_multigrep, {desc ="Telescope: multigrep"})
 		-- allow closing buffers from the buffers picker
-		local actions = require "telescope.actions"
 		require("telescope").setup {
 			defaults = {
 				layout_strategy = 'vertical',
@@ -37,7 +34,7 @@ return {
 				buffers = {
 					mappings = {
 						i = {
-							["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+							["<c-d>"] = require("telescope.actions").delete_buffer,
 						}
 					}
 				}

@@ -4,6 +4,3 @@ require("config.lazy") -- Loads lazy.nvim but also all plugins!
 require("config.lsp")
 require("config.keymaps")
 require("config.autocommands")
-
-vim.keymap.set("n", "<leader>x", ":.lua<CR>")
-vim.keymap.set("v", "<leader>x", ":lua<CR>")

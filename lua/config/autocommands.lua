@@ -11,20 +11,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- LSP Keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
+
 		local opts = { buffer = event.buf }
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
-		-- vim.keymap.set("n", "gA", vim.lsp.buf.range_code_action, opts)
-		vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, opts)
-		vim.keymap.set({ "n" }, "<leader>cd", vim.diagnostic.open_float)
-		-- these are already set to the same bindings by neovim by default
-		-- vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+
+		local function map(mode,keybinding,command, desc)
+			vim.keymap.set(mode,keybinding, vim.tbl_extend("force", opts,{desc = desc} ))
+		end
+    map("n","gd", vim.lsp.buf.definition,        "Go to Definition")
+    map("n","gD", vim.lsp.buf.declaration,       "Go to Declaration")
+    map("n","gr", vim.lsp.buf.references,        "Go to References")
+    map("n","gy", vim.lsp.buf.type_definition,   "Go to Type Definition")
+    map("n","gI", vim.lsp.buf.implementation,    "Go to Implementation")
+    map("n","K",  vim.lsp.buf.hover,             "Show Hover Documentation")
+    map("n","gK", vim.lsp.buf.signature_help,    "Show Signature Help")
+    map("n","ga", vim.lsp.buf.code_action,       "Code Actions")
+    -- map("n","gA", vim.lsp.buf.range_code_action, "Range Code Actions")
+    map("n","<leader>cf", function() vim.lsp.buf.format() end, "Format File")
+    map("n","<leader>cd", vim.diagnostic.open_float, "Open Diagnostics Float")
+    -- map("n","grn", vim.lsp.buf.rename,           "Rename Symbol")
 	end,
 })
 
