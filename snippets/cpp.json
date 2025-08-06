@@ -101,29 +101,10 @@
     ],
     "description": "Example that demostrates how to use a function. It can be used several times."
   },
-  "@throws": {
-    "prefix": "@throws",
-    "body": [
-      "@throws ${1:ExceptionName} ${2:Description.}$0"
-    ],
-    "description": "Indicates the exceptions that can be thrown by a function. This tag is a synonym of @exception."
-  },
-  "@exception": {
-    "prefix": "@exception",
-    "body": [
-      "@exception ${1:ExceptionName} ${2:Description.}$0"
-    ],
-    "description": "Indicates the exceptions that can be thrown by a function. This tag is a synonym of @throws."
-  },
   "lambda": {
     "prefix": "lambda",
     "body": "[${1:}](${2:}) ${3:-> auto} {$0}",
-    "description": "Code snippet for lambda expression"
-  },
-  "constexpr": {
-    "prefix": "constexpr",
-    "body": "constexpr ${1:auto} ${2:var} = ${3:value};",
-    "description": "Code snippet for constexpr variable"
+    "description": "lambda expression"
   },
   "template": {
     "prefix": "template",
@@ -131,7 +112,49 @@
       "template <typename ${1:T}>",
       "$0"
     ],
-    "description": "Code snippet for template"
+    "description": "template"
+  },
+  "unique_ptr": {
+    "prefix": "uniq",
+    "body": "std::unique_ptr<${1:Type}> ${2:ptr} = std::make_unique<${1:Type}>();$0",
+    "description": "Unique pointer - Type appears multiple times"
+  },
+  "shared_ptr": {
+    "prefix": "shar",
+    "body": "std::shared_ptr<${1:Type}> ${2:ptr} = std::make_shared<${1:Type}>();$0",
+    "description": "Shared pointer - Type appears multiple times"
+  },
+	"operator_equal": {
+    "prefix": "opeq",
+    "body": [
+      "bool operator==(const ${1:ClassName}& ${2:other}) const {",
+      "\treturn ${0:true};",
+      "}"
+    ],
+    "description": "Equality operator"
+  },
+  "make_unique": {
+    "prefix": "makeun",
+    "body": "auto ${1:ptr} = std::make_unique<${2:Type}>(${3:args});$0",
+    "description": "Make unique pointer"
+  },
+  "make_shared": {
+    "prefix": "makesh",
+    "body": "auto ${1:ptr} = std::make_shared<${2:Type}>(${3:args});$0",
+    "description": "Make shared pointer"
+  },
+  "structured_binding": {
+    "prefix": "autob",
+    "body": "auto [${1:var1}, ${2:var2}] = ${3:expression};$0",
+    "description": "structured binding"
+  },
+  "transform_algorithm": {
+    "prefix": "transf",
+    "body": [
+      "std::transform(${1:input}.begin(), ${1:input}.end(), ${2:output}.begin(), [](const auto& ${3:item}) {",
+      "\treturn ${0:transformation};",
+      "});"
+    ],
+    "description": "std::transform"
   }
-
 }
