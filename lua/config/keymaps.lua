@@ -70,10 +70,7 @@ vim.keymap.set('x', 'g/', '<esc>/\\%V', { silent = false, desc = 'Search inside 
 
 -- Alternative way to save and exit in Normal mode.
 vim.keymap.set('n', '<C-S>', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
-vim.keymap.set({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
 vim.keymap.set('n', '<leader>s', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
-vim.keymap.set({ 'i', 'x' }, '<leader>s', '<Esc><Cmd>silent! update | redraw<CR>',
-	{ desc = 'Save and go to Normal mode' })
 
 -- Reselect latest changed, put, or yanked text
 vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"',
