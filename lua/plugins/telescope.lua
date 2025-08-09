@@ -4,23 +4,27 @@ return {
 	dependencies = { 'nvim-lua/plenary.nvim'
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc= "Telescope: Find files"})
-		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, {desc = "Telescope: help"})
-		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin, {desc = "Telescope: all builtins"})
-		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references, {desc = "Telescope: lsp references"})
-		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, {desc = "Telescope: old files"})
+		vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc = "Telescope: Find files" })
+		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "Telescope: help" })
+		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin, { desc = "Telescope: all builtins" })
+		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references, { desc = "Telescope: lsp references" })
+		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, { desc = "Telescope: old files" })
 		vim.keymap.set("n", "<leader>fs", function()
 			require("telescope.builtin").lsp_document_symbols({
-				symbols = { "method", "function" }
+				symbols = { "method", "function" },
+				show_line = true,
+				symbol_type_width = 90
+				-- symbol_width = 90
 			})
-		end, {desc = "Telescope: symbols"})
+		end, { desc = "Telescope: symbols" })
 		vim.keymap.set("n", "<leader>en", function()
 			require('telescope.builtin').find_files {
 				cwd = vim.fn.stdpath('config')
 			}
-		end, {desc = "Telescope: neovim config"})
-		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers, {desc = "Telescope: buffers"})
-		vim.keymap.set("n","<leader>fg", require("misc.telescope-multigrep").live_multigrep, {desc ="Telescope: multigrep"})
+		end, { desc = "Telescope: neovim config" })
+		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers, { desc = "Telescope: buffers" })
+		vim.keymap.set("n", "<leader>fg", require("misc.telescope-multigrep").live_multigrep,
+			{ desc = "Telescope: multigrep" })
 		-- allow closing buffers from the buffers picker
 		require("telescope").setup {
 			defaults = {
