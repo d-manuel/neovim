@@ -5,4 +5,6 @@ require("config.lsp")
 require("config.keymaps")
 require("config.autocommands")
 
+require("misc.clipbuffers")
+
 vim.cmd("colorscheme nord")
