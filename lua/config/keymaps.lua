@@ -14,8 +14,6 @@ vim.keymap.set({ "n", "x" }, "<leader>P", '"+P', { desc = "Paste from system cli
 -- yank a line but you can paste it inline then
 vim.keymap.set({ "n", "v" }, "Y", "^y$", { desc = "yank line but be able to paste it inline afterwards" })
 
-
-
 -- Safe all files with C-S and <Leader>s
 -- vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "Save all open buffers" })
 -- vim.keymap.set("n", "<C-s>", "<cmd>wa<CR>", { desc = "Save all open buffers" })
@@ -35,7 +33,6 @@ vim.keymap.set({ "n", "i" }, "<M-k>", "<cmd>cprev<CR>", { desc = "Prev quicklist
 
 -- pasting into selection does not put into clipboard
 vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
-
 
 -- navigate Splits
 vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true, desc = "Focus split left" })
@@ -88,3 +85,9 @@ vim.keymap.set({ "n" }, "<leader>us", function()
 		statusbarHidden = true
 	end
 end, { desc = "Hide Statusbar" })
+
+
+-- Create new tab
+vim.keymap.set('n', '<C-t>', '<cmd>tabnew<CR>')
+-- Close tab. Using scope.nvim this also closes all the contained buffers.
+vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>')
