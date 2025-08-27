@@ -8,3 +8,5 @@ require("config.autocommands")
 require("misc.clipbuffers")
 
 vim.cmd("colorscheme nord")
+
+require("misc.bookmarks")
