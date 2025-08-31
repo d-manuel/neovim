@@ -25,19 +25,21 @@ return {
 		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers, { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>fg", require("misc.telescope-multigrep").live_multigrep,
 			{ desc = "Telescope: multigrep" })
-		-- allow closing buffers from the buffers picker
+		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
+		vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
 		require("telescope").setup {
 			defaults = {
 				layout_strategy = 'vertical',
 				layout_config = {
 					height = 0.95,
-					preview_height = 0.7
+					preview_height = 0.5
 				}
 			},
 			pickers = {
 				buffers = {
 					mappings = {
 						i = {
+							-- allow closing buffers from the buffers picker
 							["<c-d>"] = require("telescope.actions").delete_buffer,
 						}
 					}
