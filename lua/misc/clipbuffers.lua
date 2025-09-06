@@ -5,14 +5,13 @@ local function getBufferContent()
 	for _, buf in ipairs(bufs) do
 		if vim.api.nvim_buf_is_loaded(buf) then
 			local bufname = vim.api.nvim_buf_get_name(buf)
-			if bufname == "" then
-				bufname = "[No Name]"
-			end
-			local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-			if #lines > 0 then
-				table.insert(content, bufname .. ":")
-				local buf_content = table.concat(lines, "\n")
-				table.insert(content, buf_content)
+			if bufname ~= "" then
+				local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+				if #lines > 0 then
+					table.insert(content, bufname .. ":")
+					local buf_content = table.concat(lines, "\n")
+					table.insert(content, buf_content)
+				end
 			end
 		end
 	end
