@@ -88,6 +88,9 @@ end, { desc = "Hide Statusbar" })
 
 
 -- Create new tab
-vim.keymap.set('n', '<C-t>', '<cmd>tabnew<CR>')
+vim.keymap.set('n', '<C-t>', function()
+	vim.cmd("tabnew")
+	require('mini.starter').open()
+end)
 -- Close tab. Using scope.nvim this also closes all the contained buffers.
 vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>')
