@@ -93,4 +93,11 @@ vim.keymap.set('n', '<C-t>', function()
 	require('mini.starter').open()
 end)
 -- Close tab. Using scope.nvim this also closes all the contained buffers.
-vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>')
+vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>', { desc = "Close Tab" })
+
+
+-- lazygit in snacks
+vim.keymap.set('n', '<leader>gl',
+	function()
+		require 'snacks'.lazygit.open()
+	end, { desc = "Lazygit" })
