@@ -3,7 +3,12 @@ local function getBufferContent()
 	local content = {}
 
 	for _, buf in ipairs(bufs) do
-		if vim.api.nvim_buf_is_loaded(buf) then
+		local buflisted = vim.fn.buflisted(buf) == 1
+		local bufloaded = vim.api.nvim_buf_is_loaded(buf)
+		local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+		local name = vim.api.nvim_buf_get_name(buf)
+		if buflisted and bufloaded and buftype == "" and name ~= "" then
+			-- if vim.api.nvim_buf_is_loaded(buf) and vim.fn.buflisted(buf) then
 			local bufname = vim.api.nvim_buf_get_name(buf)
 			if bufname ~= "" then
 				local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
