@@ -22,7 +22,12 @@ return {
 				cwd = vim.fn.stdpath('config')
 			}
 		end, { desc = "Telescope: neovim config" })
-		vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers, { desc = "Telescope: buffers" })
+		vim.keymap.set("n", "<leader>b", function()
+			require('telescope.builtin').buffers({
+				sort_mru = true,
+				sort_lastused = true,
+			})
+		end, { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>fg", require("misc.telescope-multigrep").live_multigrep,
 			{ desc = "Telescope: multigrep" })
 		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
