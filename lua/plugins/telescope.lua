@@ -1,8 +1,8 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
-	dependencies = { 'nvim-lua/plenary.nvim'
-	},
+	dependencies = { 'nvim-lua/plenary.nvim',
+		'nvim-telescope/telescope-ui-select.nvim' },
 	config = function()
 		vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc = "Telescope: Find files" })
 		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "Telescope: help" })
@@ -32,12 +32,13 @@ return {
 			{ desc = "Telescope: multigrep" })
 		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
 		vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
+		require("telescope").load_extension("ui-select")
 		require("telescope").setup {
 			defaults = {
 				layout_strategy = 'vertical',
 				layout_config = {
 					height = 0.95,
-					preview_height = 0.5
+					-- preview_height = 0.5
 				}
 			},
 			pickers = {
