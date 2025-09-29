@@ -51,3 +51,6 @@ vim.opt.termguicolors = true
 vim.opt.lazyredraw    = true
 vim.opt.scrolloff     = 5
 vim.opt.updatetime    = 100
+-- Session
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
