@@ -30,10 +30,16 @@ return {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = 'mono'
 			},
-
 			sources = {
-				-- default = { 'snippets', 'lsp', 'path', 'buffer' },
-				default = { 'snippets', 'lsp', 'path' },
+				default = { 'snippets', 'lsp', 'path' }, --buffer
+				-- don't suggest snippets after a period
+				providers = {
+					snippets = {
+						should_show_items = function(ctx)
+							return ctx.trigger.initial_kind ~= '.'
+						end
+					}
+				}
 			},
 			-- Show information about the function while typing them
 			completion = {
