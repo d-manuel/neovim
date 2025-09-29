@@ -8,8 +8,10 @@ return {
 			keymaps = {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",
+				["<C-x>"] = "actions.select_split",
 				["<C-s>"] = false,
 				["<M-s>"] = "actions.select_vsplit",
+				["<C-v>"] = "actions.select_vsplit",
 				["<S-q>"] = { "actions.close", mode = "n" },
 			},
 			view_options = {
