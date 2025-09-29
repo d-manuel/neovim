@@ -16,7 +16,7 @@ return {
 
 				highlight = {
 					enable = true,
-					indent = { enable = true }
+					indent = { enable = false }
 				},
 				-- I think these require nvim-treesitter-textobjects installed:
 				textobjects = {

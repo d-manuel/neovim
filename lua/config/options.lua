@@ -18,8 +18,8 @@ vim.mouse = 'a' -- enable mouse for all available modes
 -- Fold
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false -- Don't enable folding automatically
-vim.opt.foldlevel = 99     -- Open all folds by default
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99    -- Open all folds by default
 
 vim.opt.termguicolors = true
 vim.opt.autowriteall = true
