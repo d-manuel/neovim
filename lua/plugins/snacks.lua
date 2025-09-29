@@ -13,7 +13,9 @@ return
 		input = { enabled = true },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
-		animate = { enabled = true },
-		lazygit = {},
+		animate = {},
+	},
+	keys = {
+		{ "<leader>gl", function() Snacks.lazygit() end, desc = "Open Lazygit" },
 	}
 }

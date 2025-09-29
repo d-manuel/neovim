@@ -59,7 +59,7 @@ local function symbol_info()
 end
 
 return {
-  cmd = { 'clangd' },
+  cmd = { 'clangd', "--background-index" },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_markers = {
     '.clangd',

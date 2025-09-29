@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Source current lua file" })
+-- vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Source current lua file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Run current lua line" })
 vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Run current lua line" })
 
@@ -88,13 +88,13 @@ end, { desc = "Hide Statusbar" })
 
 
 -- Create new tab
-vim.keymap.set('n', '<C-t>', function()
-	vim.cmd("tabnew")
-	require('mini.starter').open()
-end)
+vim.keymap.set('n', '<C-t>', function() vim.cmd("tabnew") end, { desc = "Close Tab" })
+
 -- Close tab. Using scope.nvim this also closes all the contained buffers.
 vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>', { desc = "Close Tab" })
 
+-- close buffer without window
+vim.keymap.set('n', 'Q', ':bp|bd #<CR>')
 
 -- lazygit in snacks
 vim.keymap.set('n', '<leader>gl',

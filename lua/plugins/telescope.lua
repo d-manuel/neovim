@@ -9,12 +9,12 @@ return {
 		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin, { desc = "Telescope: all builtins" })
 		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references, { desc = "Telescope: lsp references" })
 		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, { desc = "Telescope: old files" })
+		vim.keymap.set("n", "<leader>fR", require('telescope.builtin').resume, { desc = "Telescope: resume" })
+
 		vim.keymap.set("n", "<leader>fs", function()
 			require("telescope.builtin").lsp_document_symbols({
 				symbols = { "method", "function" },
-				show_line = true,
-				symbol_type_width = 90
-				-- symbol_width = 90
+				symbol_width = 0.7
 			})
 		end, { desc = "Telescope: symbols" })
 		vim.keymap.set("n", "<leader>en", function()
@@ -22,7 +22,7 @@ return {
 				cwd = vim.fn.stdpath('config')
 			}
 		end, { desc = "Telescope: neovim config" })
-		vim.keymap.set("n", "<leader>b", function()
+		vim.keymap.set("n", "<leader><leader>", function()
 			require('telescope.builtin').buffers({
 				sort_mru = true,
 				sort_lastused = true,
@@ -32,6 +32,7 @@ return {
 			{ desc = "Telescope: multigrep" })
 		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
 		vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
+		vim.keymap.set("n", "<leader>fd", require('telescope.builtin').diagnostics, { desc = "Telescope: diagnostics" })
 		require("telescope").load_extension("ui-select")
 		require("telescope").setup {
 			defaults = {

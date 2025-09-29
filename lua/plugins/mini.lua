@@ -55,6 +55,5 @@ return {
 				delay = 200
 			}
 		})
-		require 'mini.starter'.setup()
 	end
 }

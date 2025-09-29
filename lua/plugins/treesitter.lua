@@ -6,7 +6,7 @@ return {
 		config = function()
 			require 'nvim-treesitter.configs'.setup {
 				-- ensure_installed = { "cpp", "vim", "vimdoc", "query", "comment" },
-				ensure_installed = { "cpp" },
+				ensure_installed = { "cpp", "markdown", "markdown_inline", "idl" },
 
 				sync_install = false,
 
@@ -16,13 +16,13 @@ return {
 
 				highlight = {
 					enable = true,
-					indent = { enable = true}
+					indent = { enable = true }
 				},
 				-- I think these require nvim-treesitter-textobjects installed:
 				textobjects = {
 					select = {
 						enable = true,
-						lookahead = true,      -- Automatically jump forward to the text object
+						lookahead = true, -- Automatically jump forward to the text object
 						keymaps = {
 							["if"] = "@function.inner",
 							["af"] = "@function.outer",

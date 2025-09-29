@@ -10,7 +10,8 @@ local function getBufferContent()
 		if buflisted and bufloaded and buftype == "" and name ~= "" then
 			-- if vim.api.nvim_buf_is_loaded(buf) and vim.fn.buflisted(buf) then
 			local bufname = vim.api.nvim_buf_get_name(buf)
-			if bufname ~= "" then
+			-- if bufname ~= "" then
+			if vim.api.nvim_buf_is_loaded(buf) and vim.fn.filereadable(bufname) == 1 then
 				local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
 				if #lines > 0 then
 					table.insert(content, bufname .. ":")
