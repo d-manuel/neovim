@@ -5,7 +5,11 @@ return {
 		-- require('mini.statusline').setup({
 		-- use_icon = true })
 		require('mini.ai').setup()
-		require('mini.pairs').setup()
+		require('mini.pairs').setup {}
+		-- remove for quotes
+		vim.keymap.set('i', '"', '"')
+		vim.keymap.set('i', "'", "'")
+
 		-- require('mini.starter').setup()
 		-- require('mini.comment').setup()
 		local miniclue = require('mini.clue')
