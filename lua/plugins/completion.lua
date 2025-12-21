@@ -13,7 +13,7 @@ return {
 			-- Fallback: if the action is not doable, the keymap that was defined before
 			-- will be called
 			keymap = {
-				preset = 'default',
+				preset = 'enter',
 				['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end, "fallback" },
 				['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end, "fallback" },
 				['<A-3>'] = { function(cmp) cmp.accept({ index = 3 }) end, "fallback" },

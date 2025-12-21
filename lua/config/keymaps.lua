@@ -101,3 +101,6 @@ vim.keymap.set('n', '<leader>gl',
 	function()
 		require 'snacks'.lazygit.open()
 	end, { desc = "Lazygit" })
+
+
+vim.keymap.set('n', '<leader><leader>', ":")

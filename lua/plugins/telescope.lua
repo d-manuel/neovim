@@ -22,7 +22,7 @@ return {
 				cwd = vim.fn.stdpath('config')
 			}
 		end, { desc = "Telescope: neovim config" })
-		vim.keymap.set("n", "<leader><leader>", function()
+		vim.keymap.set("n", "<leader>b", function()
 			require('telescope.builtin').buffers({
 				sort_mru = true,
 				sort_lastused = true,
