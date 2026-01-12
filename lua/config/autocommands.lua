@@ -74,3 +74,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end
 })
+
+
+
+-- Run nvim jdtls lsp on java files
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'java',
+	callback = function()
+		require 'misc.jdtls_setup'.setup({})
+	end
+})

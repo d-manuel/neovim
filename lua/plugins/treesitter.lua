@@ -5,8 +5,7 @@ return {
 		build = ":TSUpdate",
 		config = function()
 			require 'nvim-treesitter.configs'.setup {
-				-- ensure_installed = { "cpp", "vim", "vimdoc", "query", "comment" },
-				ensure_installed = { "cpp", "markdown", "markdown_inline", "idl" },
+				ensure_installed = { "cpp", "markdown", "markdown_inline", "idl", "python", "java", "proto", "bash", "lua", "vim", "vimdoc" },
 
 				sync_install = false,
 
