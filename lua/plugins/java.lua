@@ -1,4 +1,4 @@
-function setup()
+local function setup()
 	-- Download https://github.com/eclipse-jdtls/eclipse.jdt.ls#installation
 	-- and put into ~/.local/share/jdtls (or change paths here in the file)
 	-- Also change username if necessary.
@@ -45,7 +45,7 @@ return {
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'java',
 			callback = function()
-				require 'misc.jdtls_setup'.setup()
+				setup()
 			end
 		})
 	end
