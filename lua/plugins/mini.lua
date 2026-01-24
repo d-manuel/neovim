@@ -59,5 +59,7 @@ return {
 				delay = 200
 			}
 		})
-	end
+		require('mini.visits').setup {}
+		vim.keymap.set("n", "<leader>fo", '<Cmd>lua MiniVisits.select_path()<CR>', { desc = "paths" })
+	end,
 }

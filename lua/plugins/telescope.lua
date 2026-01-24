@@ -8,7 +8,7 @@ return {
 		vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "Telescope: help" })
 		vim.keymap.set("n", "<leader>fb", require('telescope.builtin').builtin, { desc = "Telescope: all builtins" })
 		vim.keymap.set("n", "<leader>fr", require('telescope.builtin').lsp_references, { desc = "Telescope: lsp references" })
-		vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, { desc = "Telescope: old files" })
+		-- vim.keymap.set("n", "<leader>fo", require('telescope.builtin').oldfiles, { desc = "Telescope: old files" })
 		vim.keymap.set("n", "<leader>fR", require('telescope.builtin').resume, { desc = "Telescope: resume" })
 
 		vim.keymap.set("n", "<leader>fs", function()
