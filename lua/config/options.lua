@@ -19,7 +19,7 @@ vim.mouse = 'a' -- enable mouse for all available modes
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = true
-vim.opt.foldlevel = 99    -- Open all folds by default
+vim.opt.foldlevel = 99 -- Open all folds by default
 
 vim.opt.termguicolors = true
 vim.opt.autowriteall = true
@@ -27,30 +27,33 @@ vim.opt.autowriteall = true
 
 
 -- Appearance
-vim.opt.breakindent   = true -- indent wrappend lines
-vim.opt.cursorline    = true
-vim.opt.linebreak     = true
-vim.opt.splitbelow    = true
-vim.opt.splitright    = true
+vim.opt.breakindent = true -- indent wrappend lines
+vim.opt.cursorline  = true
+vim.opt.linebreak   = true
+vim.opt.splitbelow  = true
+vim.opt.splitright  = true
 
-vim.opt.ruler         = false -- no position in command line
-vim.opt.showmode      = false -- don't show mode in command line.
-vim.opt.signcolumn    = "yes:1"
+vim.opt.ruler       = false -- no position in command line
+vim.opt.showmode    = false -- don't show mode in command line.
+vim.opt.signcolumn  = "yes:1"
+
+vim.o.winborder     = 'double'
+
 
 -- Edit
-vim.opt.ignorecase    = true
-vim.opt.incsearch     = true
-vim.opt.infercase     = true
-vim.opt.smartcase     = true
-vim.opt.smartindent   = true
-vim.opt.splitkeep     = 'screen' -- less scroll during window split
-vim.opt.virtualedit   = 'block'  -- allow past line end in visual block mode
+vim.opt.ignorecase     = true
+vim.opt.incsearch      = true
+vim.opt.infercase      = true
+vim.opt.smartcase      = true
+vim.opt.smartindent    = true
+vim.opt.splitkeep      = 'screen' -- less scroll during window split
+vim.opt.virtualedit    = 'block'  -- allow past line end in visual block mode
 
-vim.opt.background    = 'dark'
-vim.opt.termguicolors = true
-vim.opt.lazyredraw    = true
-vim.opt.scrolloff     = 5
-vim.opt.updatetime    = 100
+vim.opt.background     = 'dark'
+vim.opt.termguicolors  = true
+vim.opt.lazyredraw     = true
+vim.opt.scrolloff      = 5
+vim.opt.updatetime     = 100
 -- Session
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
-vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.wildmode       = "longest:full,full" -- Command-line completion mode
