@@ -4,18 +4,19 @@ return
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
 	opts = {
-		scroll = {
-		},
-		bigfile = { enabled = true },
-		indent = { enabled = true },
-		input = { enabled = true },
-		notifier = { enabled = true },
-		quickfile = { enabled = true },
+		scroll = {},
+		bigfile = {},
+		indent = {},
+		input = {},
+		notifier = {},
+		quickfile = {},
 		animate = {},
+		words = {},
 	},
 	keys = {
-		{ "<leader>gl", function() Snacks.lazygit() end, desc = "Open Lazygit" },
+		{ "<leader>gl", function() Snacks.lazygit() end,                 desc = "Open Lazygit" },
+		{ "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference", mode = { "n", "t" } },
+		{ "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
 	}
 }
