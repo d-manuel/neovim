@@ -3,7 +3,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"bashls",
 	"ruff",
-	-- "pyright",
+	"pyright",
 	"yamlls",
 	"ts_ls",
 	"elixirls"
