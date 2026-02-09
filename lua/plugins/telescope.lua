@@ -31,7 +31,8 @@ return {
 		vim.keymap.set("n", "<leader>fg", require("misc.telescope-multigrep").live_multigrep,
 			{ desc = "Telescope: multigrep" })
 		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
-		vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
+		-- vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
+		vim.keymap.set('n', '<leader>fm', require('misc.telescope-file-marks').global_marks, { desc = "Global marks" })
 		vim.keymap.set("n", "<leader>fd", require('telescope.builtin').diagnostics, { desc = "Telescope: diagnostics" })
 		require("telescope").load_extension("ui-select")
 		require("telescope").setup {
