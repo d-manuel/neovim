@@ -46,6 +46,12 @@ return {
 			},
 		},
 	},
+	keys = {
+		{ "<leader>cc", "<CMD>CodeCompanionChat<CR>",        desc = "CodeCompanionChat" },
+		{ "<leader>ct", "<CMD>CodeCompanionChat Toggle<CR>", desc = "CodeCompanionChat Toggle" },
+		{ "<leader>cp", "<CMD>CodeCompanion<CR>",            desc = "CodeCompanion Prompt" },
+		{ "<leader>ca", "<CMD>CodeCompanionChat Add<CR>",    desc = "CodeCompanionChat Add" },
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",

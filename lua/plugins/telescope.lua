@@ -34,6 +34,17 @@ return {
 		-- vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
 		vim.keymap.set('n', '<leader>fm', require('misc.telescope-file-marks').global_marks, { desc = "Global marks" })
 		vim.keymap.set("n", "<leader>fd", require('telescope.builtin').diagnostics, { desc = "Telescope: diagnostics" })
+
+		-- Git pickers
+		vim.keymap.set("n", "<leader>gb", require('telescope.builtin').git_branches, { desc = "Git Branches" })
+		vim.keymap.set("n", "<leader>gs", require('telescope.builtin').git_status, { desc = "Git Status" })
+		vim.keymap.set("n", "<leader>gc", require('telescope.builtin').git_commits, { desc = "Git Commits" })
+		vim.keymap.set("n", "<leader>gf", require('telescope.builtin').git_bcommits,
+			{ desc = "Git Buffer Commits" })
+		vim.keymap.set("v", "<leader>gf", require('telescope.builtin').git_bcommits_range,
+			{ desc = "Git Buffer Commits Range" })
+		vim.keymap.set("n", "<leader>gS", require('telescope.builtin').git_stash, { desc = "Git Stash" })
+
 		require("telescope").load_extension("ui-select")
 		require("telescope").setup {
 			defaults = {
