@@ -30,6 +30,8 @@ return {
 		end, { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>fg", require("misc.telescope-multigrep").live_multigrep,
 			{ desc = "Telescope: multigrep" })
+		vim.keymap.set("n", "<leader>fp", require("misc.telescope-pdfgrep").search,
+			{ desc = "Telescope: pdfgrep" })
 		vim.keymap.set("n", "<leader>fj", require('telescope.builtin').jumplist, { desc = "Telescope: jumplist" })
 		-- vim.keymap.set("n", "<leader>fm", require('telescope.builtin').marks, { desc = "Telescope: marks" })
 		vim.keymap.set('n', '<leader>fm', require('misc.telescope-file-marks').global_marks, { desc = "Global marks" })
@@ -44,6 +46,11 @@ return {
 		vim.keymap.set("v", "<leader>gf", require('telescope.builtin').git_bcommits_range,
 			{ desc = "Git Buffer Commits Range" })
 		vim.keymap.set("n", "<leader>gS", require('telescope.builtin').git_stash, { desc = "Git Stash" })
+
+
+		-- Toggle .rgignore
+		vim.keymap.set("n", "<leader>ut", require("misc.toggle_rgignore").toggle_rgignore_entries,
+			{ desc = " Toggle .rgignore tests" })
 
 		require("telescope").load_extension("ui-select")
 		require("telescope").setup {

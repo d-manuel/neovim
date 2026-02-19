@@ -1,7 +1,10 @@
 return {
 	{
 		"tiagovla/scope.nvim",
-		config = true
+		config = true,
+		keys = {
+			{ "<leader>B", "<cmd>Telescope scope buffers<cr>", desc = "Telescope: Show all buffers" },
+		}
 	},
 	{
 		'akinsho/bufferline.nvim',
