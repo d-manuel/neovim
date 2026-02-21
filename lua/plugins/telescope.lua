@@ -37,6 +37,8 @@ return {
 		vim.keymap.set('n', '<leader>fm', require('misc.telescope-file-marks').global_marks, { desc = "Global marks" })
 		vim.keymap.set("n", "<leader>fd", require('telescope.builtin').diagnostics, { desc = "Telescope: diagnostics" })
 
+		vim.keymap.set("n", "<leader>uc", require('telescope.builtin').colorscheme, { desc = "Telescope: colorscheme" })
+
 		-- Git pickers
 		vim.keymap.set("n", "<leader>gb", require('telescope.builtin').git_branches, { desc = "Git Branches" })
 		vim.keymap.set("n", "<leader>gs", require('telescope.builtin').git_status, { desc = "Git Status" })

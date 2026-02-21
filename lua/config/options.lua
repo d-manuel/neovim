@@ -41,19 +41,24 @@ vim.o.winborder     = 'double'
 
 
 -- Edit
-vim.opt.ignorecase     = true
-vim.opt.incsearch      = true
-vim.opt.infercase      = true
-vim.opt.smartcase      = true
-vim.opt.smartindent    = true
-vim.opt.splitkeep      = 'screen' -- less scroll during window split
-vim.opt.virtualedit    = 'block'  -- allow past line end in visual block mode
+vim.opt.ignorecase           = true
+vim.opt.incsearch            = true
+vim.opt.infercase            = true
+vim.opt.smartcase            = true
+vim.opt.smartindent          = true
+vim.opt.splitkeep            = 'screen' -- less scroll during window split
+vim.opt.virtualedit          = 'block' -- allow past line end in visual block mode
 
-vim.opt.background     = 'dark'
-vim.opt.termguicolors  = true
-vim.opt.lazyredraw     = true
-vim.opt.scrolloff      = 5
-vim.opt.updatetime     = 100
+vim.opt.background           = 'dark'
+vim.opt.termguicolors        = true
+vim.opt.lazyredraw           = true
+vim.opt.scrolloff            = 5
+vim.opt.updatetime           = 100
 -- Session
-vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
-vim.opt.wildmode       = "longest:full,full" -- Command-line completion mode
+vim.opt.sessionoptions       = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+vim.opt.wildmode             = "longest:full,full" -- Command-line completion mode
+
+vim.g.alabaster_dim_comments = true
+
+
+-- for alabaster colorscheme:
