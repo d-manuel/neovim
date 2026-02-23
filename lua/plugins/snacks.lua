@@ -5,13 +5,11 @@ return
 	priority = 1000,
 	lazy = false,
 	opts = {
-		scroll = {},
 		bigfile = {},
 		indent = {},
 		input = {},
 		notifier = {},
 		quickfile = {},
-		animate = {},
 		words = {},
 	},
 	keys = {
