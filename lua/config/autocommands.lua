@@ -74,3 +74,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end
 })
+
+local function set_statusline()
+	local active_window_id = vim.api.nvim_get_current_win()
+	local tabwindows = vim.api.nvim_tabpage_list_wins(0);
+	for _, window_id in ipairs(tabwindows) do
+		if window_id == active_window_id then
+			vim.wo[window_id].statusline = '%#Directory#%{%expand("%:.")%}%*'
+		else
+			vim.wo[window_id].statusline = '%#StatusLineNC#%{%expand("%:.")%}%*'
+		end
+	end
+end
+
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+	callback = set_statusline
+})
