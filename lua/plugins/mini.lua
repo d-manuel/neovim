@@ -2,16 +2,45 @@ return {
 	"echasnovski/mini.nvim",
 	version = false,
 	config = function()
-		-- require('mini.statusline').setup({
-		-- use_icon = true })
+		local statusline = require('mini.statusline')
+		statusline.setup({
+			content = {
+				active = function()
+					local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+					local git           = MiniStatusline.section_git({ trunc_width = 40 })
+					local diff          = MiniStatusline.section_diff({ trunc_width = 75 })
+					local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+					local lsp           = MiniStatusline.section_lsp({ trunc_width = 75 })
+					local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+					local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+					local location      = MiniStatusline.section_location({ trunc_width = 75 })
+					local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+					return MiniStatusline.combine_groups({
+						'%<', -- Mark general truncate point
+						{ hl = 'Directory', strings = { filename } },
+						'%=', -- End left alignment
+						-- { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+						{ hl = '',          strings = { git, diff, diagnostics, lsp } },
+						-- { hl = mode_hl,                 strings = { mode } },
+						{ hl = mode_hl,     strings = { search } },
+					})
+				end,
+				inactive = function()
+					local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+					return MiniStatusline.combine_groups({
+						{ hl = 'MiniStatuslineInactive', strings = { filename } },
+					})
+				end,
+			},
+		})
+
 		require('mini.ai').setup()
 		require('mini.pairs').setup {}
 		-- remove for quotes
 		vim.keymap.set('i', '"', '"')
 		vim.keymap.set('i', "'", "'")
 
-		-- require('mini.starter').setup()
-		-- require('mini.comment').setup()
 		local miniclue = require('mini.clue')
 		miniclue.setup({
 			triggers = {
@@ -44,6 +73,14 @@ return {
 				-- `z` key
 				{ mode = 'n', keys = 'z' },
 				{ mode = 'x', keys = 'z' },
+
+				-- `]` key
+				{ mode = 'n', keys = ']' },
+				{ mode = 'x', keys = ']' },
+
+				-- `[` key
+				{ mode = 'n', keys = '[' },
+				{ mode = 'x', keys = '[' },
 			},
 
 			clues = {
