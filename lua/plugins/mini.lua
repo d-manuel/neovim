@@ -63,7 +63,27 @@ return {
 				delay = 200
 			}
 		})
-		require('mini.visits').setup {}
-		vim.keymap.set("n", "<leader>fo", '<Cmd>lua MiniVisits.select_path()<CR>', { desc = "paths" })
+
+		local make_select_path = function(select_global, recency_weight)
+			local visits = require('mini.visits')
+			local sort = visits.gen_sort.default({ recency_weight = recency_weight })
+			local select_opts = { sort = sort }
+			return function()
+				local cwd = select_global and '' or vim.fn.getcwd()
+				visits.select_path(cwd, select_opts)
+			end
+		end
+
+		local map = function(lhs, desc, ...)
+			vim.keymap.set('n', lhs, make_select_path(...), { desc = desc })
+		end
+
+		-- Adjust LHS and description to your liking
+		map('<Leader>vR', 'Select recent (all)', true, 1)
+		map('<Leader>vr', 'Select recent (cwd)', false, 1)
+		map('<Leader>vY', 'Select frecent (all)', true, 0.5)
+		map('<Leader>vy', 'Select frecent (cwd)', false, 0.5)
+		map('<Leader>vF', 'Select frequent (all)', true, 0)
+		map('<Leader>vf', 'Select frequent (cwd)', false, 0)
 	end,
 }
