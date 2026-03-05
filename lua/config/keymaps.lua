@@ -104,3 +104,7 @@ vim.keymap.set('n', '<leader>gl',
 
 
 vim.keymap.set('n', '<leader><leader>', ":")
+
+
+-- Search within selection
+vim.keymap.set("x", "/", "<Esc>/\\%V")
