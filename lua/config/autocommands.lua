@@ -75,6 +75,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "c", "cpp" },
+	callback = function(event)
+		vim.keymap.set("n", "<leader>oh", function()
+			vim.cmd("LspClangdSwitchSourceHeader")
+			-- local clients = vim.lsp.get_clients({ bufnr = event.buf, name = "clangd" })
+			-- if #clients > 0 then
+			-- else
+			--   vim.notify("clangd not attached", vim.log.levels.WARN)
+			-- end
+		end, { buffer = event.buf, desc = "Switch source/header (clangd)" })
+	end,
+})
+
+
 local function set_statusline()
 	local active_window_id = vim.api.nvim_get_current_win()
 	local tabwindows = vim.api.nvim_tabpage_list_wins(0);
