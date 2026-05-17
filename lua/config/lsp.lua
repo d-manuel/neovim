@@ -9,6 +9,24 @@ vim.lsp.enable({
 	"elixirls"
 })
 
+vim.lsp.config('clangd', {
+	cmd = {
+		"clangd",
+		"--clang-tidy",
+		"--background-index",
+		"--compile-commands-dir=build",
+		"--cross-file-rename",
+		"--completion-style=bundled",
+		"--header-insertion=iwyu",
+		"--header-insertion-decorators",
+		"--pch-storage=memory",
+		"--suggest-missing-includes",
+		"--function-arg-placeholders",
+		"--inlay-hints",
+		"--fallback-style=llvm",
+	}
+})
+
 local blink = require "blink.cmp"
 
 -- Add blinks capabilities to neovims capabilities and set it for all lsp servers.

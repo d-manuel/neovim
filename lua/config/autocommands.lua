@@ -58,11 +58,18 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- Format on save if lsp supports formatting
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
+		-- exclude java:
+		if vim.bo.filetype == "java" then
+			return
+		end
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
 		if client == nil then
 			return
 		end
+
+		vim.keymap.set("n", "<leader>0", "<cmd>LspClangdSwitchSourceHeader<CR>",
+			{ desc = "C++ : Switch Source and Header File" })
 
 		if client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -74,21 +81,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "c", "cpp" },
-	callback = function(event)
-		vim.keymap.set("n", "<leader>oh", function()
-			vim.cmd("LspClangdSwitchSourceHeader")
-			-- local clients = vim.lsp.get_clients({ bufnr = event.buf, name = "clangd" })
-			-- if #clients > 0 then
-			-- else
-			--   vim.notify("clangd not attached", vim.log.levels.WARN)
-			-- end
-		end, { buffer = event.buf, desc = "Switch source/header (clangd)" })
-	end,
-})
-
 
 local function set_statusline()
 	local active_window_id = vim.api.nvim_get_current_win()
@@ -104,4 +96,17 @@ end
 
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 	callback = set_statusline
+})
+
+-- lsp based folding:
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client and client:supports_method('textDocument/foldingRange') then
+			local win = vim.api.nvim_get_current_win()
+			vim.wo[win].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+			vim.wo[win].foldmethod = 'expr'
+			vim.wo[win].foldlevel = 99 -- unfold by default
+		end
+	end
 })

@@ -11,6 +11,7 @@ return
 		notifier = {},
 		quickfile = {},
 		words = {},
+		explorer = {},
 	},
 	keys = {
 		{ "<leader>gl", function() Snacks.lazygit() end,                 desc = "Open Lazygit" },

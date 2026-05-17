@@ -1,5 +1,4 @@
-vim.g.foldmethod = "marker"
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.clipboard = ""
 vim.opt.shiftwidth = 2
@@ -20,6 +19,9 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99 -- Open all folds by default
+-- if lsp is active use that for folding (see corresponding autocommand for lspattach)
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 
 vim.opt.termguicolors = true
 vim.opt.autowriteall = true
@@ -47,7 +49,7 @@ vim.opt.infercase            = true
 vim.opt.smartcase            = true
 vim.opt.smartindent          = true
 vim.opt.splitkeep            = 'screen' -- less scroll during window split
-vim.opt.virtualedit          = 'block' -- allow past line end in visual block mode
+vim.opt.virtualedit          = 'block'  -- allow past line end in visual block mode
 
 vim.opt.background           = 'dark'
 vim.opt.termguicolors        = true

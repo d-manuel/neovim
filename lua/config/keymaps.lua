@@ -22,8 +22,9 @@ vim.keymap.set({ "n", "v" }, "Y", "^y$", { desc = "yank line but be able to past
 vim.keymap.set("n", "<leader>qq", "<cmd>confirm qa<CR>", { desc = "Quit neovim" })
 -- buffer movement
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>")
-vim.keymap.set("n", "H", "<cmd>bprev<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Prev buffer" })
+-- vim.keymap.set("n", "H", "<cmd>bprev<CR>", { desc = "Next buffer" })
+-- vim.keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Prev buffer" })
+-- atm use bufferlinecycle
 
 --QuickFix List
 -- Note: Ctrl+q in telescope to put it in the quickfix list
@@ -66,8 +67,8 @@ vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Reset Zoom" })
 vim.keymap.set('x', 'g/', '<esc>/\\%V', { silent = false, desc = 'Search inside visual selection' })
 
 -- Alternative way to save and exit in Normal mode.
-vim.keymap.set('n', '<C-S>', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
-vim.keymap.set('n', '<leader>s', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
+vim.keymap.set('n', '<C-S>', '<Cmd>update | redraw<CR>', { desc = 'Save' })
+vim.keymap.set('n', '<leader>s', '<Cmd> update | redraw<CR>', { desc = 'Save' })
 
 -- Reselect latest changed, put, or yanked text
 vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"',

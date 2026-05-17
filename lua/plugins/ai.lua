@@ -32,25 +32,14 @@ return {
 			},
 			inline = {
 				adapter = "openwebui",
-				keymaps = {
-					accept_change = {
-						modes = { n = "<leader>aa" },
-						description = "Accept the suggested change",
-					},
-					reject_change = {
-						modes = { n = "<leader>ar" },
-						opts = { nowait = true },
-						description = "Reject the suggested change",
-					},
-				},
 			},
 		},
 	},
 	keys = {
-		{ "<leader>cc", "<CMD>CodeCompanionChat<CR>",        desc = "CodeCompanionChat" },
-		{ "<leader>ct", "<CMD>CodeCompanionChat Toggle<CR>", desc = "CodeCompanionChat Toggle" },
-		{ "<leader>cp", "<CMD>CodeCompanion<CR>",            desc = "CodeCompanion Prompt" },
-		{ "<leader>ca", "<CMD>CodeCompanionChat Add<CR>",    desc = "CodeCompanionChat Add" },
+		{ "<leader>cc", "<CMD>CodeCompanionChat<CR>",          desc = "CodeCompanionChat" },
+		{ "<leader>ct", "<CMD>CodeCompanionChat Toggle<CR>",   desc = "CodeCompanionChat Toggle" },
+		{ "<leader>cp", "<CMD>'<,'>CodeCompanion<CR>",         desc = "CodeCompanion Prompt",    mode = { "v" } },
+		{ "<leader>ca", "<CMD>'<,'>CodeCompanionChat Add<CR>", desc = "CodeCompanionChat Add",   mode = { "v" } },
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
