@@ -1,6 +1,5 @@
 -- vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Source current lua file" })
-vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Run current lua line" })
-vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Run current lua line" })
+vim.keymap.set({ "n", "x" }, "<leader>x", ":.lua<CR>", { desc = "Run current lua line" })
 
 --  jk to leave insert mode
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Leave insert mode", remap = true })
@@ -55,8 +54,8 @@ vim.keymap.set('n', '<C-Right>', '"<Cmd>vertical resize +" . v:count1 . "<CR>"',
 vim.keymap.set('n', 'J', '6j', { noremap = true, silent = true, desc = "down 6 lines" })
 -- Shift+K: Move cursor UP 6 lines
 vim.keymap.set('n', 'K', '6k', { noremap = true, silent = true, desc = "up 5 lines" })
--- Shift+S: Join lines (acts like the built-in 'J')
-vim.keymap.set('n', 'S', 'J', { noremap = true, silent = true })
+-- Shift+S: Join lines (replaces built-in 'J')
+vim.keymap.set("n", "S", "mzJ`z", { desc = "Join lines without moving cursor" })
 
 
 -- Zoom
@@ -64,7 +63,7 @@ vim.keymap.set("n", "<leader>uz", "<C-w>_<C-w>|", { desc = "Zoom" })
 vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Reset Zoom" })
 
 -- Search inside visually highlighted text
-vim.keymap.set('x', 'g/', '<esc>/\\%V', { silent = false, desc = 'Search inside visual selection' })
+vim.keymap.set('x', '/', '<esc>/\\%V', { silent = false, desc = 'Search inside visual selection' })
 
 -- Alternative way to save and exit in Normal mode.
 vim.keymap.set('n', '<C-S>', '<Cmd>update | redraw<CR>', { desc = 'Save' })
@@ -97,15 +96,32 @@ vim.keymap.set('n', '<leader>qc', '<cmd>tabclose<CR>', { desc = "Close Tab" })
 -- close buffer without window
 vim.keymap.set('n', 'Q', ':bp|bd #<CR>')
 
--- lazygit in snacks
-vim.keymap.set('n', '<leader>gl',
-	function()
-		require 'snacks'.lazygit.open()
-	end, { desc = "Lazygit" })
-
-
 vim.keymap.set('n', '<leader><leader>', ":")
 
 
--- Search within selection
-vim.keymap.set("x", "/", "<Esc>/\\%V")
+vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
+
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
+
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search highlighting", silent = true })
+
+vim.keymap.set("v", "<", "<gv", { desc = "Unindent and keep selection" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent and keep selection" })
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
+
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
+
+vim.keymap.set("n", "<leader>hs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word cursor is on globally" })
+
+-- vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
+
+-- native undotree
+vim.keymap.set("n", "<leader>hu", function()
+	vim.cmd.packadd("nvim.undotree")
+	require("undotree").open()
+end, { desc = "Toggle Builtin Undotree" })
