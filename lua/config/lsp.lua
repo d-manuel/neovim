@@ -11,6 +11,7 @@ vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, { desc = 
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Open Diagnostics Float" })
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 
+vim.diagnostic.config { virtual_lines = true }
 
 vim.lsp.enable({
 	"clangd",
