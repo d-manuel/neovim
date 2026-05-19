@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 	callback = set_statusline
 })
 
--- lsp based folding:
+-- lsp based folding if available. TS based folding should be set in the options.
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)

@@ -16,12 +16,10 @@ vim.mouse = 'a' -- enable mouse for all available modes
 
 -- Fold
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99 -- Open all folds by default
 -- if lsp is active use that for folding (see corresponding autocommand for lspattach)
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 
 vim.opt.termguicolors = true
 vim.opt.autowriteall = true
