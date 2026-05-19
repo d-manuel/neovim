@@ -1,3 +1,17 @@
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+vim.keymap.set("n", "gR", vim.lsp.buf.references, { desc = "Go to References" })
+vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
+vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+vim.keymap.set("n", "gK", vim.lsp.buf.hover, { desc = "Show Hover Documentation" })
+vim.keymap.set("n", "gS", vim.lsp.buf.signature_help, { desc = "Show Signature Help" })
+vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code Actions" })
+-- vim.keymap.set("n", "gA", vim.lsp.buf.range_code_action, { desc = "Range Code Actions" })
+vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, { desc = "Format File" })
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Open Diagnostics Float" })
+vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
+
+
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
