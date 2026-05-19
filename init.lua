@@ -4,7 +4,3 @@ require("config.lazy") -- Loads lazy.nvim but also all plugins!
 require("config.lsp")
 require("config.keymaps")
 require("config.autocommands")
-
-require("misc.clipbuffers")
-
-require("misc.bookmarks")
