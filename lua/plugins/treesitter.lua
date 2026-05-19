@@ -1,45 +1,42 @@
----@diagnostic disable: missing-fields
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require 'nvim-treesitter.configs'.setup {
-				ensure_installed = { "cpp", "markdown", "markdown_inline", "idl", "python", "java", "proto", "bash", "lua", "vim", "vimdoc" },
-
-				sync_install = false,
-
-				auto_install = false,
-
-				ignore_install = {},
-
-				highlight = {
-					enable = true,
-					indent = { enable = false }
-				},
-				-- I think these require nvim-treesitter-textobjects installed:
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true, -- Automatically jump forward to the text object
-						keymaps = {
-							["if"] = "@function.inner",
-							["af"] = "@function.outer",
-						},
-					},
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<cr>",
-						node_incremental = "<cr>",
-						scope_incremental = "<C-space>",
-						node_decremental = "<bs>",
-					}
-				}
-			}
-		end,
+	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
+	build = ":TSUpdate",
+	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
+	opts = {
+		indent = { enable = true },
+		highlight = {
+			enable = true,
+		},
+		folds = { enable = true },
+		endwise = { enable = true }
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects", },
-	{ "nvim-treesitter/nvim-treesitter-context", }
+	config = function()
+		local ensure_installed = { "cpp", "markdown", "markdown_inline", "idl", "python", "java", "proto", "bash", "lua",
+			"vim", "vimdoc" }
+
+		require("nvim-treesitter").install(ensure_installed)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "*",
+			callback = function(args)
+				local buf = args.buf
+				local ft = vim.bo[buf].filetype
+
+				local lang = vim.treesitter.language.get_lang(ft)
+				if not lang then
+					return
+				end
+
+				local ok_add = pcall(vim.treesitter.language.add, lang)
+				if not ok_add then
+					return
+				end
+
+				pcall(vim.treesitter.start, buf, lang)
+			end,
+		})
+	end
+
 }
