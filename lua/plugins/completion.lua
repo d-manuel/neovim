@@ -12,7 +12,8 @@ return {
 		-- Fallback: if the action is not doable, the keymap that was defined before
 		-- will be called
 		keymap = {
-			preset = 'enter'
+			preset = 'enter',
+			['<A-y>'] = require('minuet').make_blink_map(),
 		},
 
 		appearance = {
@@ -20,14 +21,23 @@ return {
 			nerd_font_variant = 'mono'
 		},
 		sources = {
-			default = { 'snippets', 'lsp', 'path' }, --buffer
+			default = { 'snippets', 'lsp', 'path', 'minuet' }, --buffer
 			-- don't suggest snippets after a period
 			providers = {
 				snippets = {
 					should_show_items = function(ctx)
 						return ctx.trigger.initial_kind ~= '.'
 					end
-				}
+				},
+				minuet = {
+					name = 'minuet',
+					module = 'minuet.blink',
+					async = true,
+					-- Should match minuet.config.request_timeout * 1000,
+					-- since minuet.config.request_timeout is in seconds
+					timeout_ms = 3000,
+					score_offset = 50, -- Gives minuet higher priority among suggestions
+				},
 			}
 		},
 		-- Show information about the function while typing them
@@ -35,6 +45,10 @@ return {
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 500
+			},
+			-- Recommended to avoid unnecessary request
+			trigger = {
+				prefetch_on_insert = false
 			}
 		},
 		signature = { enabled = true },
