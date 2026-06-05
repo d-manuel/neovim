@@ -63,6 +63,11 @@ local function set_statusline()
 	local active_window_id = vim.api.nvim_get_current_win()
 	local tabwindows = vim.api.nvim_tabpage_list_wins(0);
 	for _, window_id in ipairs(tabwindows) do
+		local buf = vim.api.nvim_win_get_buf(window_id)
+		local buftype = vim.bo[buf].buftype
+		if buftype == "nofile" or buftype == "prompt" then
+			return
+		end
 		if window_id == active_window_id then
 			vim.wo[window_id].statusline = '%#Directory#%{%expand("%:.")%}%*'
 		else
