@@ -23,7 +23,6 @@ return
 
 		-- Top Pickers & Explorer
 		{ "<leader>fR", function() Snacks.picker.resume() end,                                   desc = "Resume" },
-		-- { "<leader>gl", function() Snacks.lazygit.open() end,                                    desc = "Lazygit",               mode = { "n" } },
 		{ "<leader>ff", function() Snacks.picker.smart() end,                                    desc = "Smart Find Files" },
 		-- { "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Find Files" },
 		{ "<leader>fg", function() Snacks.picker.grep() end,                                     desc = "Grep" },
@@ -50,7 +49,8 @@ return
 		{ "<leader>gs", function() Snacks.picker.git_status() end,                               desc = "Git Status" },
 		{ "<leader>gS", function() Snacks.picker.git_stash() end,                                desc = "Git Stash" },
 		{ "<leader>gd", function() Snacks.picker.git_diff() end,                                 desc = "Git Diff (Hunks)" },
-		{ "<leader>gf", function() Snacks.picker.git_log_file() end,                             desc = "Git Log File" },
+		{ "<leader>gf", function() Snacks.picker.git_files() end,                                desc = "Git Files" },
+		{ "<leader>gF", function() Snacks.picker.git_log_file() end,                             desc = "Git Log File" },
 
 		-- tracked/unracked staged/unstaged hunks etc.
 		-- git grep through old files and stuff...
