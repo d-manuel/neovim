@@ -98,6 +98,7 @@ vim.keymap.set('n', 'Q', ':bp|bd #<CR>')
 
 vim.keymap.set('n', '<leader><leader>', ":")
 
+vim.keymap.set("n", "<leader>ut", function() require("misc.toggle_rgignore").toggle_rgignore_entries() end)
 
 vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 
