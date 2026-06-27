@@ -24,6 +24,12 @@ return {
 			},
 			interactions = {
 				chat = {
+					slash_commands = {
+						buffer = { opts = { provider = "snacks" } },
+						file = { opts = { provider = "snacks" } },
+						help = { opts = { provider = "snacks" } },
+						symbols = { opts = { provider = "snacks" } },
+					},
 					adapter = "opencode",
 				},
 				cmd = {
@@ -111,7 +117,7 @@ return {
 	},
 	{
 		'milanglacier/minuet-ai.nvim',
-		-- enabled = true,
+		enabled = false,
 		config = function()
 			require('minuet').setup {
 				provider = 'openai_compatible',
