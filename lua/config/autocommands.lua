@@ -44,10 +44,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client == nil then
 			return
 		end
-
-		vim.keymap.set("n", "<leader>0", "<cmd>LspClangdSwitchSourceHeader<CR>",
-			{ desc = "C++ : Switch Source and Header File" })
-
 		if client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = args.buf,
@@ -58,6 +54,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		if vim.bo.filetype ~= "cpp"
+				and vim.bo.filetype ~= "c" then
+			return
+		end
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+		if client == nil then
+			return
+		end
+
+		vim.keymap.set("n", "<leader>0", "<cmd>LspClangdSwitchSourceHeader<CR>",
+			{ desc = "C++ : Switch Source and Header File" })
+	end
+})
+
 
 -- lsp based folding if available. TS based folding should be set in the options.
 vim.api.nvim_create_autocmd("LspAttach", {
