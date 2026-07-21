@@ -126,3 +126,5 @@ vim.keymap.set("n", "<leader>hu", function()
 	vim.cmd.packadd("nvim.undotree")
 	require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })
+
+require("config.window_keymaps")
