@@ -3,7 +3,16 @@ return {
 	version = false,
 	lazy = false,
 	config = function()
-		require('mini.ai').setup()
+		require('mini.ai').setup {
+			-- disable
+			-- - af/if because I use them with treesitter
+			-- - n because of nearEoL from various textobjects
+			-- Remark: n is also used by vim itself now... I just don't use it atm
+			custom_textobjects = {
+				f = false,
+				n = false
+			}
+		}
 		require('mini.pairs').setup {}
 
 		local miniclue = require('mini.clue')

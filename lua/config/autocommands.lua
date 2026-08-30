@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 
--- lsp based folding if available. TS based folding should be set in the options.
+-- lsp based folding if available. TS based folding should be set in the options as fallback
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
