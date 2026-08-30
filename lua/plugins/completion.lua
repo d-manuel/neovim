@@ -13,7 +13,11 @@ return {
 		-- will be called
 		keymap = {
 			preset = 'enter',
-			['<A-y>'] = require('minuet').make_blink_map(),
+			['<A-y>'] = (function()
+				local ok, minuet = pcall(require, "minuet")
+				if not ok then return end
+				minuet.make_blink_map()
+			end)(),
 		},
 
 		appearance = {
