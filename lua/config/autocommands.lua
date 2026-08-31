@@ -31,14 +31,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
-
 -- Format on save if lsp supports formatting
+--TODO interact with conform.nvim. which to autorun where etc. Probably just evelove to more specific setups over time
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		-- exclude java:
 		if vim.bo.filetype == "java" then
 			return
 		end
+
+		-- Use conform.nvim for cpp in a different autocommand
+		if vim.bo.filetype == "cpp" or vim.bo.filetype == "c" then
+			return
+		end
+
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
 		if client == nil then
@@ -53,6 +59,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end
 	end
+})
+
+-- cpp format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { '*.c', '*.h', '*cpp' },
+	callback = function(args)
+		vim.notify("run clang-conform")
+		require("conform").format { bufnr = args.buf }
+	end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
