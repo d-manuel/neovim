@@ -13,11 +13,7 @@ return {
 		-- will be called
 		keymap = {
 			preset = 'enter',
-			['<A-y>'] = (function()
-				local ok, minuet = pcall(require, "minuet")
-				if not ok then return end
-				minuet.make_blink_map()
-			end)(),
+			['<A-y>'] = require('minuet').make_blink_map(),
 		},
 
 		appearance = {
@@ -25,7 +21,7 @@ return {
 			nerd_font_variant = 'mono'
 		},
 		sources = {
-			default = { 'snippets', 'lsp', 'path', 'minuet' }, --buffer
+			default = { 'minuet', 'snippets', 'lsp', 'path' }, --buffer
 			-- don't suggest snippets after a period
 			providers = {
 				snippets = {
@@ -39,7 +35,7 @@ return {
 					async = true,
 					-- Should match minuet.config.request_timeout * 1000,
 					-- since minuet.config.request_timeout is in seconds
-					timeout_ms = 3000,
+					timeout_ms = 10000,
 					score_offset = 50, -- Gives minuet higher priority among suggestions
 				},
 			}
