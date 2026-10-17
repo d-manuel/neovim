@@ -1,3 +1,6 @@
+vim.pack.add({
+	{ src = "https://github.com/mfussenegger/nvim-jdtls" }
+})
 local function setup()
 	-- Download https://github.com/eclipse-jdtls/eclipse.jdt.ls#installation
 	-- and put into ~/.local/share/jdtls (or change paths here in the file)
@@ -38,15 +41,9 @@ local function setup()
 	require("jdtls").start_or_attach(config)
 end
 
-return {
-	"mfussenegger/nvim-jdtls",
-	config = function()
-		-- Run nvim jdtls lsp on java files
-		vim.api.nvim_create_autocmd('FileType', {
-			pattern = 'java',
-			callback = function()
-				setup()
-			end
-		})
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'java',
+	callback = function()
+		setup()
 	end
-}
+})

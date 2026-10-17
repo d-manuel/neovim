@@ -1,6 +1,8 @@
-return {
-	"folke/twilight.nvim",
-	opts = {
+vim.pack.add({
+	{ src = "https://github.com/folke/twilight.nvim" },
+})
+require("twilight").setup {
+	{
 		dimming = {
 			alpha = 0.25, -- amount of dimming
 			-- we try to get the foreground from the highlight groups or fallback color
@@ -19,6 +21,7 @@ return {
 			"method_definition"
 		},
 		exclude = {}, -- exclude these filetypes
-	},
-	keys = { { "<leader>ud", "<cmd>Twilight<CR>", desc = "Toggle Twilight" } }
+	}
+
 }
+vim.keymap.set("n", "<leader>ud", "<cmd>Twilight<CR>", { desc = "Toggle Twilight" })

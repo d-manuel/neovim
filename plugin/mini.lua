@@ -1,9 +1,7 @@
-return {
-	"echasnovski/mini.nvim",
-	version = false,
-	lazy = false,
-	config = function()
-		require('mini.ai').setup {
+vim.pack.add({
+	{src = "https://github.com/nvim-mini/mini.nvim", version="stable"},
+})
+require('mini.ai').setup {
 			-- disable
 			-- - af/if because I use them with treesitter
 			-- - n because of nearEoL from various textobjects
@@ -13,7 +11,7 @@ return {
 				n = false
 			}
 		}
-		require('mini.pairs').setup {}
+require('mini.pairs').setup {}
 
 		local miniclue = require('mini.clue')
 		miniclue.setup({
@@ -71,5 +69,4 @@ return {
 				delay = 200
 			}
 		})
-	end,
-}
+

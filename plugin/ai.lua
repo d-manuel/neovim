@@ -1,10 +1,15 @@
-return {
-	{
+vim.pack.add({
+	{ src = "https://github.com/olimorris/codecompanion.nvim"},
+	-- { src = "https://github.com/carlos-algms/agentic.nvim"},
+	{ src = "https://github.com/milanglacier/minuet-ai.nvim"},
+	{ src = "https://github.com/nvim-lua/plenary.nvim"},
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter"},
+	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim"},
+				-- ft = { "markdown", "codecompanion" },
+})
 
-		"olimorris/codecompanion.nvim",
-		version = "*",
-		opts = {
-			adapters = {
+require("codecompanion").setup( {
+adapters = {
 				http = {
 					openwebui = function()
 						return require("codecompanion.adapters").extend("openai_compatible", {
@@ -42,87 +47,14 @@ return {
 					adapter = "openwebui",
 				},
 			},
-		},
-		keys = {
-			{ "<leader>cc", "<CMD>CodeCompanionChat<CR>",          desc = "CodeCompanionChat" },
-			{ "<leader>ct", "<CMD>CodeCompanionChat Toggle<CR>",   desc = "CodeCompanionChat Toggle" },
-			{ "<leader>cp", "<CMD>'<,'>CodeCompanion<CR>",         desc = "CodeCompanion Prompt",    mode = { "v" } },
-			{ "<leader>ca", "<CMD>'<,'>CodeCompanionChat Add<CR>", desc = "CodeCompanionChat Add",   mode = { "v" } },
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				ft = { "markdown", "codecompanion" },
-			},
-		},
-	},
-	{
-		"carlos-algms/agentic.nvim",
-		enabled = false,
+})
 
-		--- @type agentic.PartialUserConfig
-		opts = {
-			-- Any ACP-compatible provider works. Built-in: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "copilot-acp" | "auggie-acp" | "mistral-vibe-acp" | "cline-acp" | "goose-acp" | "kiro-acp" | "pi-acp"
-			provider = "opencode-acp", -- setting the name here is all you need to get started
-		},
+vim.keymap.set("n", "<leader>cc", "<CMD>CodeCompanionChat<CR>", {desc = "CodeCompanionChat"})
+vim.keymap.set("n", "<leader>ct", "<CMD>CodeCompanionChat Toggle<CR>", {desc = "CodeCompanionChat Toggle"})
+vim.keymap.set("v", "<leader>cp", "<CMD>'<,'>CodeCompanion<CR>", {desc = "CodeCompanion Prompt"})
+vim.keymap.set("v", "<leader>ca", "<CMD>'<,'>CodeCompanionChat Add<CR>", {desc = "CodeCompanionChat Add"})
 
-		-- these are just suggested keymaps; customize as desired
-		keys = {
-			{
-				"<C-\\>",
-				function() require("agentic").toggle() end,
-				mode = { "n", "v", "i" },
-				desc = "Toggle Agentic Chat"
-			},
-			{
-				"<C-'>",
-				function() require("agentic").add_selection_or_file_to_context() end,
-				mode = { "n", "v" },
-				desc = "Add file or selection to Agentic to Context"
-			},
-			{
-				"<C-,>",
-				function() require("agentic").new_session() end,
-				mode = { "n", "v", "i" },
-				desc = "New Agentic Session"
-			},
-			{
-				"<A-i>r", -- ai Restore
-				function()
-					require("agentic").restore_session()
-				end,
-				desc = "Agentic Restore session",
-				silent = true,
-				mode = { "n", "v", "i" },
-			},
-			{
-				"<leader>ad", -- ai Diagnostics
-				function()
-					require("agentic").add_current_line_diagnostics()
-				end,
-				desc = "Add current line diagnostic to Agentic",
-				mode = { "n" },
-			},
-			{
-				"<leader>aD", -- ai all Diagnostics
-				function()
-					require("agentic").add_buffer_diagnostics()
-				end,
-				desc = "Add all buffer diagnostics to Agentic",
-				mode = { "n" },
-			},
-		},
-	},
-	{
-		"milanglacier/minuet-ai.nvim",
-
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-
-		opts = {
+require("minuet").setup({
 			provider = "openai_compatible",
 
 			provider_options = {
@@ -183,6 +115,65 @@ return {
 					dismiss = "<A-e>",
 				},
 			},
-		},
-	}
-}
+		}
+)
+
+
+	-- {
+	-- 	enabled = false,
+	--
+	-- 	--- @type agentic.PartialUserConfig
+	-- 	opts = {
+	-- 		-- Any ACP-compatible provider works. Built-in: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "copilot-acp" | "auggie-acp" | "mistral-vibe-acp" | "cline-acp" | "goose-acp" | "kiro-acp" | "pi-acp"
+	-- 		provider = "opencode-acp", -- setting the name here is all you need to get started
+	-- 	},
+	--
+	-- 	-- these are just suggested keymaps; customize as desired
+	-- 	keys = {
+	-- 		{
+	-- 			"<C-\\>",
+	-- 			function() require("agentic").toggle() end,
+	-- 			mode = { "n", "v", "i" },
+	-- 			desc = "Toggle Agentic Chat"
+	-- 		},
+	-- 		{
+	-- 			"<C-'>",
+	-- 			function() require("agentic").add_selection_or_file_to_context() end,
+	-- 			mode = { "n", "v" },
+	-- 			desc = "Add file or selection to Agentic to Context"
+	-- 		},
+	-- 		{
+	-- 			"<C-,>",
+	-- 			function() require("agentic").new_session() end,
+	-- 			mode = { "n", "v", "i" },
+	-- 			desc = "New Agentic Session"
+	-- 		},
+	-- 		{
+	-- 			"<A-i>r", -- ai Restore
+	-- 			function()
+	-- 				require("agentic").restore_session()
+	-- 			end,
+	-- 			desc = "Agentic Restore session",
+	-- 			silent = true,
+	-- 			mode = { "n", "v", "i" },
+	-- 		},
+	-- 		{
+	-- 			"<leader>ad", -- ai Diagnostics
+	-- 			function()
+	-- 				require("agentic").add_current_line_diagnostics()
+	-- 			end,
+	-- 			desc = "Add current line diagnostic to Agentic",
+	-- 			mode = { "n" },
+	-- 		},
+	-- 		{
+	-- 			"<leader>aD", -- ai all Diagnostics
+	-- 			function()
+	-- 				require("agentic").add_buffer_diagnostics()
+	-- 			end,
+	-- 			desc = "Add all buffer diagnostics to Agentic",
+	-- 			mode = { "n" },
+	-- 		},
+	-- 	},
+	-- },
+
+
