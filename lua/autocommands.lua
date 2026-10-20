@@ -65,7 +65,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { '*.c', '*.h', '*cpp' },
 	callback = function(args)
-		vim.notify("run clang-conform")
 		require("conform").format { bufnr = args.buf }
 	end,
 })

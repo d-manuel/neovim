@@ -10,7 +10,7 @@
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
     "codecompanion.nvim": {
-      "rev": "799526fb35548c26e2dd74c3b282537bb8122a3b",
+      "rev": "86118411be00f0451a59c5ef7972c437e979e1b7",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "conform.nvim": {
@@ -37,8 +37,12 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "luna.nvim": {
+      "rev": "727c19334528e1b8939f518d1ea43c4e62d98f91",
+      "src": "https://github.com/WTFox/luna.nvim"
+    },
     "markdown-plus.nvim": {
-      "rev": "f9331d0ad9a38fefc4200fe2c332d6fbfc793015",
+      "rev": "7d38d3f1449c3c1c6b344d1dc8a531e8d8940c51",
       "src": "https://github.com/yousefhadder/markdown-plus.nvim"
     },
     "mini.nvim": {
@@ -49,6 +53,10 @@
     "minuet-ai.nvim": {
       "rev": "50bf63b031c0391e926fdf0b3d044d37846e6e34",
       "src": "https://github.com/milanglacier/minuet-ai.nvim"
+    },
+    "neovim": {
+      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
+      "src": "https://github.com/rose-pine/neovim"
     },
     "nvim": {
       "rev": "6f8ca3d0f228fbd61e5aeeb5c68343c410720873",
@@ -63,11 +71,11 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
+      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "ca581c3436fc2b236847f5b739ebc263739e5ca6",
+      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {

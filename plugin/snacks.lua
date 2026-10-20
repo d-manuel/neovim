@@ -21,7 +21,8 @@ vim.keymap.set({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) e
 
 -- Top Pickers & Explorer
 vim.keymap.set("n", "<leader>fR", function() Snacks.picker.resume() end, { desc = "Resume" })
-vim.keymap.set("n", "<leader>ff", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
+vim.keymap.set("n", "<leader>F", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 -- vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
 vim.keymap.set("n", "<leader>b", function() Snacks.picker.buffers() end, { desc = "Buffers" })
@@ -32,13 +33,16 @@ vim.keymap.set("n", "<leader>fe", function() Snacks.explorer() end, { desc = "Fi
 -- lsp
 vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
 vim.keymap.set("n", "<leader>fr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
+vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
 vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
 vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 vim.keymap.set("n", "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end,
 	{ desc = "LSP Workspace Symbols" })
 vim.keymap.set("n", "<leader>fi", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
+vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 vim.keymap.set("n", "<leader>fT", function() Snacks.picker.lsp_type_definitions() end,
 	{ desc = "Goto T[y]pe Definition" })
+vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
 vim.keymap.set("n", "<leader>fc", function() Snacks.picker.lsp_incoming_calls() end, { desc = "C[a]lls Incoming" })
 vim.keymap.set("n", "<leader>fC", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "C[a]lls Outgoing" })
 
@@ -87,7 +91,8 @@ vim.keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { des
 -- vim.keymap.set({ "n", "x" }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
 -- -- search
 -- vim.keymap.set("n", "<leader>su", function() Snacks.picker.undo() end, { desc = "Undo History" })
-vim.keymap.set("n", "<leader>fl", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
+vim.keymap.set("n", "<leader>fw", function() Snacks.picker.grep_word() end, { desc = "Grep [w]ord" })
 
 --custom
 vim.keymap.set("n", "<leader>en", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
