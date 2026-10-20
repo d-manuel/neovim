@@ -121,14 +121,10 @@ vim.keymap.set({ "x", "o" }, "as", function()
 end)
 
 
-require('various-textobjs').setup {
-	opts = {
-		opts = {
-			keymaps = {
-				useDefaults = true,
-				-- list of things to disable from the defualts:
-				-- disableDefaults = {}
-			}
-		},
+require("various-textobjs").setup({
+	keymaps = {
+		useDefaults = true
+		-- list of things to disable from the defualts:
+		-- disableDefaults = {}
 	}
-}
+})
