@@ -7,7 +7,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lua",
 	once = true,
 	callback = function()
-		vim.notify("hello")
 		require("lazydev").setup({
 			library = {
 				-- See the configuration section for more details
