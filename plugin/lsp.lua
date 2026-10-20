@@ -13,7 +13,7 @@ lint.linters_by_ft = {
 }
 
 lint.linters.cppcheck.args = {
-	'--enable=warning,style,performance,portability,information, unusedFunction',
+	'--enable=warning,style,performance,portability,information,unusedFunction',
 	'--std=c++20',
 	'--inline-suppr',
 	'--suppress=unknownMacro',
